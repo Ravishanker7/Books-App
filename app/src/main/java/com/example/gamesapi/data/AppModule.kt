@@ -19,13 +19,13 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideRetrofitInstance()= Retrofit.Builder()
+    fun provideRetrofitInstance() : Retrofit= Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())
         .baseUrl(BASEURL)
         .build()
     @Provides
     @Singleton
-    fun provideFreeGamesApi(retrofit: Retrofit)=retrofit.create(GamesApi::class.java)
+    fun provideFreeGamesApi(retrofit: Retrofit) : GamesApi=retrofit.create(GamesApi::class.java)
 
     @Provides
     @Singleton
