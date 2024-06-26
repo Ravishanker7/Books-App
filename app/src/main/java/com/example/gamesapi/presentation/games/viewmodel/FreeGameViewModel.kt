@@ -30,7 +30,11 @@ class FreeGameViewModel @Inject constructor(private val useCase: FreeGameUseCase
     val uiEffect : SharedFlow<UIEffect>
         get() = _uiEffect.asSharedFlow()
 
-    fun getAllFreeGames()=useCase().onEach {
+
+    init {
+        getAllFreeGames()
+    }
+    private fun getAllFreeGames()=useCase().onEach {
         when(it){
             is Resource.Error->{
                 _freeGamesState.value=FreeGameState().copy(Error=it?.msg)

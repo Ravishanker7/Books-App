@@ -23,6 +23,8 @@ object AppModule {
         .addConverterFactory(GsonConverterFactory.create())
         .baseUrl(BASEURL)
         .build()
+
+
     @Provides
     @Singleton
     fun provideFreeGamesApi(retrofit: Retrofit) : GamesApi=retrofit.create(GamesApi::class.java)
